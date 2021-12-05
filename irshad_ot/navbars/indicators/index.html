@@ -5,51 +5,52 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Magic Menu Indicators</title>
+  <title>Menu Indicator</title>
 </head>
 <body>
+  <section style="--i:green">
   <div class="navigation">
     <ul>
-      <li class="list active">
-        <a href="#">
+      <li class="list active" data-color="var(--color1)" >
+        <a href="">
           <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
           <span class="text">Home</span>
         </a>
       </li>
 
-      <li class="list">
-        <a href="#">
+      <li class="list" data-color="var(--color2)">
+        <a href="">
           <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
           <span class="text">Profile</span>
         </a>
       </li>
-      
 
-      <li class="list">
-        <a href="#">
-          <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+      <li class="list" data-color="var(--color3)">
+        <a href="">
+          <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
           <span class="text">Message</span>
         </a>
       </li>
-      
 
-      <li class="list">
-        <a href="#">
-          <span class="icon"><ion-icon name="image-outline"></ion-icon></span>
-          <span class="text">Photos</span>
+      <li class="list" data-color="var(--color4)">
+        <a href="">
+          <span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+          <span class="text">Help</span>
         </a>
       </li>
-      
 
-      <li class="list">
-        <a href="#">
+      <li class="list" data-color="var(--color5)">
+        <a href="">
           <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
           <span class="text">Settings</span>
         </a>
       </li>
+
       <div class="indicator"></div>
     </ul>
   </div>
+  </section>
+
   <script>
     const list = document.querySelectorAll('.list')
 
@@ -57,14 +58,24 @@
       list.forEach((item) => (
         item.classList.remove('active')
       ))
-      this.classList.add('active')
+      this.classList.add('active')      
     }
 
-    list.forEach((item) => (
+    list.forEach((item) => {
       item.addEventListener('mouseover', activeLink )
-    ))
+    })
+
+    list.forEach((item) => {
+      item.addEventListener('mouseenter', function(event) {
+        const section = document.querySelector('section')
+        const colorBg = event.target.getAttribute('data-color')
+        section.style.backgroundColor = colorBg;
+      })
+    })
   </script>
+
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
