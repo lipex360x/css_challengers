@@ -1,0 +1,53 @@
+{
+	"Template Snippets": {
+    "prefix": "snippetTemplate",
+    "body": [
+      "\"${1:SNIPPET_TITLE}\": {",
+      "  \"prefix\": \"${2:PREFIX}\",",
+      "  \"body\": [",
+      "    \"${3:BODY}\"",
+      "  ]",
+      "},",
+      "",
+    ]
+  },
+
+	"HTML Template": {
+		"prefix": "htmlTemplate",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"<head>",
+			"  <meta charset=\"UTF-8\">",
+			"  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+			"  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+			"  <link rel=\"stylesheet\" href=\"style.css\">",
+			"  <title>${1:TITLE}</title>",
+			"</head>",
+			"<body>",
+			"  ",
+			"</body>",
+			"</html>",
+		]
+	},
+
+	"CSS Template": {
+		"prefix": "cssTemplate",
+		"body": [
+			"* {",
+			"  margin: 0;",
+			"  padding: 0;",
+			"  box-sizing: border-box;",
+			"}",
+			"",
+			"body {",
+			"  display: grid;",
+			"  align-items: center;",
+			"  justify-content: center;",
+			"  min-height: 100vh;",
+			"}",
+		]
+	},
+	
+	
+}
