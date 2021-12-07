@@ -26,6 +26,10 @@
         <span class="dayOfWeek"></span> | 
         <span class="currentDay"></span>
       </div>
+
+      <div class="calendar">
+        <span class="completeDate">25/01/2020</span>
+      </div>
     </div>
   </section>
 
@@ -38,18 +42,25 @@
 
     const daysOfWeek = document.querySelector('.dayOfWeek')
     const currentDayNumber = document.querySelector('.currentDay')
+    const completeDate = document.querySelector('.completeDate')
 
     setInterval(() => {
       const day = new Date()
-      
-      const currentDay = day.getDate()
+
       const dayOfWeek = day.toLocaleString('en-us', { weekday: 'short'})
       const hh = day.getHours() * 30
       const mm = day.getMinutes() * deg
       const ss = day.getSeconds() * deg
       
+      const currentDay = (''+day.getDate()).padStart(2,'0')
+      const currentMonth = (''+(day.getMonth() + 1)).padStart(2,'0')
+      const currentYear = day.getFullYear()
+
+      const currentDate = `${currentDay}/${currentMonth}/${currentYear}`
+
       daysOfWeek.innerHTML = dayOfWeek
-      currentDayNumber.innerHTML = (''+currentDay).padStart(2,'0')
+      currentDayNumber.innerHTML = currentDay
+      completeDate.innerHTML = currentDate
 
       hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`
       mn.style.transform = `rotateZ(${mm}deg)`
