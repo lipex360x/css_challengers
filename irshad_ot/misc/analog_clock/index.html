@@ -34,8 +34,6 @@
   </section>
 
   <script>
-    const deg = 6
-
     const hr = document.querySelector('.hr')
     const mn = document.querySelector('.mn')
     const sc = document.querySelector('.sc')
@@ -48,23 +46,33 @@
       const day = new Date()
 
       const dayOfWeek = day.toLocaleString('en-us', { weekday: 'short'})
-      const hh = day.getHours() * 30
-      const mm = day.getMinutes() * deg
-      const ss = day.getSeconds() * deg
       
-      const currentDay = (''+day.getDate()).padStart(2,'0')
-      const currentMonth = (''+(day.getMonth() + 1)).padStart(2,'0')
-      const currentYear = day.getFullYear()
+      const hh = day.getHours()
+      const cHH = (''+hh).padStart(2,'0')
+      const dHH = hh * 30
 
-      const currentDate = `${currentDay}/${currentMonth}/${currentYear}`
+      const mm = day.getMinutes()
+      const cMM = (''+mm).padStart(2,'0')
+      const dMM = mm * 6
 
+      const ss = day.getSeconds()
+      const cSS = (''+ss).padStart(2,'0')
+      const dSS = ss * 6
+      
+      const cDay = (''+day.getDate()).padStart(2,'0')
+      const cMonth = (''+(day.getMonth() + 1)).padStart(2,'0')
+      const cYear = day.getFullYear()
+
+      hr.style.transform = `rotateZ(${dHH + (dMM / 12)}deg)`
+      mn.style.transform = `rotateZ(${dMM}deg)`
+      sc.style.transform = `rotateZ(${dSS}deg)`
+
+      const currentDate = `${cDay}/${cMonth}/${cYear} - ${cHH}:${cMM}:${cSS}`
+      
       daysOfWeek.innerHTML = dayOfWeek
-      currentDayNumber.innerHTML = currentDay
+      currentDayNumber.innerHTML = cDay
       completeDate.innerHTML = currentDate
 
-      hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`
-      mn.style.transform = `rotateZ(${mm}deg)`
-      sc.style.transform = `rotateZ(${ss}deg)`
     })
   </script>
 </body>
